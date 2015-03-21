@@ -14,7 +14,12 @@ Ext.application({
     name: 'MyApp',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'MyApp.utils.Functions'
+    ],
+
+    controllers:[
+        'Main'
     ],
 
     views: [
