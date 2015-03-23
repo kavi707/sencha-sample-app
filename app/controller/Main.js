@@ -15,7 +15,7 @@ Ext.define('MyApp.controller.Main', {
             fieldCountry: 'settingsview textfield[name=country]',
             fieldUnits: 'settingsview selectfield'
         },
-        controls: {
+        control: {
             'btnRefresh': {
                 tap: 'onRefresh'
             },
@@ -34,9 +34,29 @@ Ext.define('MyApp.controller.Main', {
         },
         stores:'MyApp.store.Settings'
     },
-    
+
+    onRefresh: function() {
+        console.log('On refresh button clicked');
+    },
+
+    onToggle: function(togglefield) {
+        console.log("On toggle");
+
+        if (togglefield.getValue() === 0) {
+            this.getFieldCity().enable();
+            this.getFieldCountry().enable();
+            this.getFieldUnits().enable();
+        } else {
+            this.getFieldCity().disable();
+            this.getFieldUnits().disable();
+            this.getFieldCountry().disable();
+            this.getFieldCity().reset();
+            this.getFieldCountry().reset();
+        }
+    },
+
     //called when the Application is launched, remove if not needed
     launch: function(app) {
-        //console.log("Test app running");
+        console.log("Test app running");
     }
 });
