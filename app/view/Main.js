@@ -44,7 +44,7 @@ Ext.define('MyApp.view.Main', {
                 cls: 'footer',
                 ui: 'light',
                 docked: 'bottom',
-                html: '<span>Powered by &amp;copy; Sencha Touch</span>'
+                html: '<span>Powered by Sencha Touch</span>'
             },
         ]
     }

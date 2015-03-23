@@ -55,8 +55,34 @@ Ext.define('MyApp.controller.Main', {
         }
     },
 
+    onSettingsBtnTap: function() {
+        console.log("Settings btn clicked");
+        this.getMainView().setActiveItem(0);
+    },
+
+    onBackBtnTap: function() {
+        console.log("Back btn clicked");
+        this.getMainView().setActiveItem(1);
+    },
+
+    onCarouselChange: function(carousel, newVal, oldVal) {
+        console.log("View changed");
+        if (newVal.getItemId() == "mainview") {
+            this.getBtnBack().hide();
+            this.getBtnSettings().show();
+
+            Ext.ComponentQuery.query('titlebar')[0].setTitle('Do I need my Umbrella?');
+        } else {
+            this.getBtnBack().show();
+            this.getBtnSettings().hide();
+
+            Ext.ComponentQuery.query('titlebar')[0].setTitle('Settings');
+        }
+    },
+
     //called when the Application is launched, remove if not needed
     launch: function(app) {
         console.log("Test app running");
+        this.getMainView().setActiveItem(1);
     }
 });

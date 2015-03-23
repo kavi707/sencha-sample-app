@@ -5,6 +5,15 @@
 @import 'sencha-touch/default/all';
 
 // Custom code goes here..
+$base-color: #42282E;
+
+$alert-color: #D6665A;
+$confirm-color: #75A48B;
+$page-bg-color: lighten(#D9CFB0,15%);
+$form-bg-color: $page-bg-color;
+$base-gradient: 'none';
+
+@include sencha-toolbar-ui('light', #DC9B74, 'none');
 
 // Examples of using the icon mixin:
 // @include icon('user');

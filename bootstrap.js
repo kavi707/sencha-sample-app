@@ -667,7 +667,12 @@ Ext.ClassManager.addNameAlternateMappings({
   "Ext.viewport.WindowsPhone": [
     "Ext.viewport.WP"
   ],
-  "MyApp.view.Main": []
+  "MyApp.controller.Main": [],
+  "MyApp.model.Setting": [],
+  "MyApp.store.Settings": [],
+  "MyApp.utils.Functions": [],
+  "MyApp.view.Main": [],
+  "MyApp.view.SettingsView": []
 });
 
 Ext.ClassManager.addNameAliasMappings({
@@ -1399,8 +1404,15 @@ Ext.ClassManager.addNameAliasMappings({
   "Ext.viewport.Ios": [],
   "Ext.viewport.Viewport": [],
   "Ext.viewport.WindowsPhone": [],
+  "MyApp.controller.Main": [],
+  "MyApp.model.Setting": [],
+  "MyApp.store.Settings": [],
+  "MyApp.utils.Functions": [],
   "MyApp.view.Main": [
     "widget.main"
+  ],
+  "MyApp.view.SettingsView": [
+    "widget.settingsview"
   ]
 });
 
