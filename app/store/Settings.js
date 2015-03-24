@@ -6,6 +6,7 @@ Ext.define('MyApp.store.Settings', {
     requires: ['MyApp.model.Setting'],
     config: {
         model: 'MyApp.model.Setting',
-        autoLoad: true
+        autoLoad: true,
+        storeId: 'Settings'
     }
 });

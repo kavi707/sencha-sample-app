@@ -1,9 +1,12 @@
 Ext.define('MyApp.model.Setting', {
     extend: 'Ext.data.Model',
-    requires: ['Ext.data.identifier.Uuid'],
+    requires: [
+        'Ext.data.identifier.Uuid',
+        'Ext.data.Field',
+        'Ext.data.proxy.LocalStorage'
+    ],
 
     config: {
-        idProperty: 'id',
         identifier: 'uuid',
         fields: [
             { name: 'id', type: 'auto' },

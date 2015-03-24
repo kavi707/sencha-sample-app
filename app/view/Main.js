@@ -4,10 +4,11 @@ Ext.define('MyApp.view.Main', {
     requires: [
         'Ext.TitleBar',
         'Ext.Toolbar',
-        'MyApp.view.SettingsView'
+        'MyApp.view.SettingsView',
+        'MyApp.view.SlideMenuView'
     ],
     config: {
-        direction: 'vertical',
+        direction: 'horizontal',
 
         items: [
             {
@@ -29,15 +30,35 @@ Ext.define('MyApp.view.Main', {
                         action: 'settings',
                         ui: 'plain',
                         align: 'right'
+                    },
+                    {
+                        xtype: 'button',
+                        hidden: true,
+                        iconCls: 'list',
+                        align: 'right',
+                        action: 'menu',
+                        ui: 'plain',
+                        handler: function(){
+                            if(Ext.Viewport.getMenus().right.isHidden()){
+                                Ext.Viewport.showMenu('right');
+                            }
+                            else
+                            {
+                                Ext.Viewport.hideMenu('right');
+                            }
+                        }
                     }
                 ]
+            },
+            {
+                itemId: 'mainview',
+                cls: 'textview'
             },
             {
                 xtype: 'settingsview'
             },
             {
-                itemId: 'mainview',
-                cls: 'textview'
+                xtype: 'slidemenuview'
             },
             {
                 xtype: 'toolbar',
@@ -47,5 +68,32 @@ Ext.define('MyApp.view.Main', {
                 html: '<span>Powered by Sencha Touch</span>'
             },
         ]
+    },
+
+    initialize: function(){
+        Ext.Viewport.setMenu(this.createMenu(),{
+            side: 'right',
+            reveal: true
+        });
+    },
+
+    //function goes here
+    createMenu: function(){
+        var menu = Ext.create('Ext.Menu', {
+            width: 250,
+            scrollable: 'vertical',
+            items: [
+                {
+                    xtype: 'button',
+                    text: 'Option 1',
+                },
+                {
+                    xtype: 'button',
+                    text: 'Option 2',
+                }
+            ]
+        });
+
+        return menu;
     }
 });

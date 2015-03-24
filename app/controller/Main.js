@@ -5,9 +5,12 @@ Ext.define('MyApp.controller.Main', {
         refs: {
             mainView: 'main',
             settingsView: 'settingsview',
+            menuView: 'slidemenuview',
 
             btnSettings: 'main button[action=settings]',
+            btnMenu:'main button[action=menu]',
             btnRefresh: 'settingsview button[action=refresh]',
+            btnMenuView: 'settingsview button[action=menuview]',
             btnBack: 'main button[action=back]',
 
             toggleGeo: 'settingsview togglefield',
@@ -25,6 +28,12 @@ Ext.define('MyApp.controller.Main', {
             'btnBack': {
                 tap: 'onBackBtnTap'
             },
+            'btnMenu':{
+                tap: 'onBtnMenuTap'
+            },
+            btnMenuView: {
+                tap: 'onMenuViewBtnTap'
+            },
             'toggleGeo': {
                 change: 'onToggle'
             },
@@ -37,6 +46,15 @@ Ext.define('MyApp.controller.Main', {
 
     onRefresh: function() {
         console.log('On refresh button clicked');
+    },
+
+    onBtnMenuTap: function() {
+        console.log('On menu button clicked');
+    },
+
+    onMenuViewBtnTap : function () {
+        console.log('On Menu View button clicked');
+        this.getMainView().setActiveItem(2);
     },
 
     onToggle: function(togglefield) {
@@ -57,32 +75,41 @@ Ext.define('MyApp.controller.Main', {
 
     onSettingsBtnTap: function() {
         console.log("Settings btn clicked");
-        this.getMainView().setActiveItem(0);
+        this.getMainView().setActiveItem(1);
     },
 
     onBackBtnTap: function() {
         console.log("Back btn clicked");
-        this.getMainView().setActiveItem(1);
+        this.getMainView().setActiveItem(0);
     },
 
     onCarouselChange: function(carousel, newVal, oldVal) {
         console.log("View changed");
+        console.log(newVal.getItemId());
         if (newVal.getItemId() == "mainview") {
             this.getBtnBack().hide();
+            this.getBtnMenu().hide();
             this.getBtnSettings().show();
 
             Ext.ComponentQuery.query('titlebar')[0].setTitle('Do I need my Umbrella?');
-        } else {
+        }  else if (newVal.getItemId() == "ext-settingsview-1") {
             this.getBtnBack().show();
             this.getBtnSettings().hide();
+            this.getBtnMenu().hide();
 
             Ext.ComponentQuery.query('titlebar')[0].setTitle('Settings');
+        } else {
+            this.getBtnBack().show();
+            this.getBtnMenu().show();
+            this.getBtnSettings().hide();
+
+            Ext.ComponentQuery.query('titlebar')[0].setTitle('Menu');
         }
     },
 
     //called when the Application is launched, remove if not needed
     launch: function(app) {
         console.log("Test app running");
-        this.getMainView().setActiveItem(1);
+        this.getMainView().setActiveItem(0);
     }
 });

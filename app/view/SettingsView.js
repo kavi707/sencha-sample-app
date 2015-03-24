@@ -51,6 +51,13 @@ Ext.define('MyApp.view.SettingsView', {
                     action:'refresh',
                     margin:'10 5',
                     ui: 'confirm'
+                },
+                {
+                    xtype: 'button',
+                    text: 'Menu',
+                    action:'menuview',
+                    margin:'10 5',
+                    ui: 'confirm'
                 }
             ]
         }]
